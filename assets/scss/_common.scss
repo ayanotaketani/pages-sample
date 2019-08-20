@@ -1,3 +1,4 @@
+// 六角形のアニメーション
 %hexagon {
   position: absolute;
   top: 0;
@@ -83,24 +84,19 @@
 
 .animation-title {
   text-align: center;
-  animation: slidein 3s linear forwards;
+  animation: fadein 3s linear forwards;
   // display: none;
 }
 
-@keyframes slidein {
+@keyframes fadein {
   0% {
-    opacity: 1;
-    display: block;
-    transform: translateX(-100%);
-  }
-  50% {
-    opacity: 1;
-    display: block;
-    transform: translateX(0);
-  }
-  98% {
-    display: block;
     opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
   }
   100% {
     opacity: 0;
