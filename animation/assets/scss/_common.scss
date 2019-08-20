@@ -1,0 +1,108 @@
+%hexagon {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  &::before, &::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 5px;
+    content: '';
+    background-color: #1699cb;
+  }
+  &::before {
+    top: 0;
+  }
+  &::after {
+    bottom: 0;
+  }
+}
+
+.hexagon {
+  position: relative;
+  width: 100px;
+  &::before {
+    display: block;
+    padding-top: 173.205080757%;  /* 3 / √3 * 100 */
+    content: '';
+  }
+  .hexagon__inner-1 {
+    @extend %hexagon;
+  }
+  .hexagon__inner-2 {
+    @extend %hexagon;
+    transform: rotate(120deg);
+  }
+  .hexagon__inner-3 {
+    @extend %hexagon;
+    transform: rotate(-120deg);
+  }
+}
+
+.hexa-box01 {
+  overflow: hidden;
+  margin-right: 100px;
+  li {
+    transform: translateY(100%);
+    animation: slideup 1s linear 3s forwards;
+  }
+}
+
+@keyframes slideup {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.hexa-box02 {
+  overflow: hidden;
+  margin-left: 100px;
+  li {
+    transform: translateY(-100%);
+    animation: slidedown 1s linear 3s forwards;
+  }
+}
+
+@keyframes slidedown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+.hexa01 {
+  margin-right: 100px;
+}
+
+.animation-title {
+  text-align: center;
+  animation: slidein 3s linear forwards;
+  // display: none;
+}
+
+@keyframes slidein {
+  0% {
+    opacity: 1;
+    display: block;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+    display: block;
+    transform: translateX(0);
+  }
+  98% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
