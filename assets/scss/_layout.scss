@@ -1,0 +1,260 @@
+// ----------------------------------------
+  // 横幅
+// ----------------------------------------
+
+// 幅の定義
+$container-lg: 1200px;
+$container-mid: 1080px;
+$container-min: 980px;
+
+// 基盤
+@mixin container($width) {
+  @content;
+  margin: 0 auto;
+  max-width: $width;
+
+  // 一番最後の要素は強制的にmargin-bottomを0にする
+  & > * {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  // clearfix処理
+  &:after {
+    display: block;
+    clear: both;
+    content: '';
+  }
+  // ディスプレイの端に着く前にmarginで隙間を開ける
+  @include max-screen($width + 30) {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  // marginで隙間を開けない処理
+  &.margin-none {
+    @include max-screen($width + 30) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+// 横幅 大
+.l-container-lg {
+  @include container($container-lg){
+    // 個別に設定するものがあればここへ
+  }
+}
+
+// 横幅 中
+.l-container-mid {
+  @include container($container-mid){
+    // 個別に設定するものがあればここへ
+  }
+}
+
+// 横幅 小
+.l-container-min {
+  @include container($container-min){
+    // 個別に設定するものがあればここへ
+  }
+}
+// ----------------------------------------
+
+
+// ----------------------------------------
+  // 縦padding
+// ----------------------------------------
+
+// 縦padding 大
+.l-section-lg {
+  padding: 80px 0;
+  @include max-screen($bp-mobile) {
+    padding: 40px 0;
+  }
+}
+// 縦padding 中
+.l-section-mid {
+  padding: 60px 0;
+  @include max-screen($bp-mobile) {
+    padding: 30px 0;
+  }
+}
+// 縦padding 小
+.l-section-min {
+  padding: 40px 0;
+  @include max-screen($bp-mobile) {
+    padding: 20px 0;
+  }
+}
+// ----------------------------------------
+
+
+// ----------------------------------------
+  // 幅レイアウト
+// ----------------------------------------
+@for $i from 0 through 100 {
+
+.l-wrap-#{$i}p {
+   margin: 0 auto;
+   width: percentage($i / 100);
+
+   @include max-screen($bp-mobile) {
+     width: 100%;
+   }
+ }
+}
+// ----------------------------------------
+
+
+// ----------------------------------------
+  // flexbox
+// ----------------------------------------
+// 必ず入れるもの
+.l-flex-wrap {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+  // ----------------------------------------
+    // 横並び
+  // ----------------------------------------
+  // 左揃え（初期値）
+  .l-flex-jc-fs {
+    justify-content: flex-start;
+  }
+  // 右揃え
+  .l-flex-jc-fe {
+    justify-content: flex-end;
+  }
+  // 中央揃え
+  .l-flex-jc-center {
+    justify-content: center;
+  }
+  // 両端隙間を開けて均等配置
+  .l-flex-jc-sa {
+    justify-content: space-around;
+  }
+  // 両端詰めて均等配置
+  .l-flex-jc-sb {
+    justify-content: space-between;
+  }
+  // ----------------------------------------
+
+  // ----------------------------------------
+    // 縦並び
+  // ----------------------------------------
+  // 個々の高さを伸ばして一番長い高さに揃える（初期値）
+  .l-flex-ai-st {
+    align-items: stretch;
+  }
+  // 上揃え
+  .l-flex-ai-fs {
+    align-items: flex-start;
+  }
+  // 下揃え
+  .l-flex-ai-fe {
+    align-items: flex-end;
+  }
+  // 中央揃え
+  .l-flex-ai-center {
+    align-items: center;
+  }
+  // 文字のベースライン揃え
+  .l-flex-ai-bl {
+    align-items: baseline;
+  }
+  // ----------------------------------------
+
+  // ----------------------------------------
+  // 要素の並び順
+  // ----------------------------------------
+  // 横並び（初期値）
+  .l-flex-fd-row {
+    flex-direction: row;
+  }
+  // 横並び右から
+  .l-flex-fd-rr {
+    flex-direction: row-reverse;
+  }
+  // 縦並び
+  .l-flex-fd-column {
+    flex-direction: column;
+  }
+  // 縦並び下から
+  .l-flex-fd-cr {
+    flex-direction: column-reverse;
+  }
+  // ----------------------------------------
+
+  // ----------------------------------------
+  // 折り返し
+  // ----------------------------------------
+  // 折り返す（l-flex-wrapにて設定済み）
+  .l-flex-wrap-w {
+    flex-wrap: wrap;
+  }
+  // 下から上に折り返す
+  .l-flex-wrap-wr {
+    flex-wrap: wrap-reverse;
+  }
+  // 折り返さない
+  .l-flex-nowrap {
+    flex-wrap: nowrap;
+  }
+  // ----------------------------------------
+
+  // ----------------------------------------
+  // 分割
+  // ----------------------------------------
+  // 2分割
+  .l-flex-col-2 {
+    margin-bottom: 20px;
+    width: 48%;
+
+    @include max-screen($bp-mobile) {
+      width: 100%;
+    }
+  }
+  // 3分割
+  .l-flex-parent-3 {
+    &:after {
+      display: block;
+      width:30%;
+      content:'';
+    }
+  }
+  .l-flex-col-3 {
+    margin-bottom: 20px;
+    width: 30%;
+
+    @include max-screen($bp-mobile) {
+      width: 100%;
+    }
+  }
+  // 4分割
+  .l-flex-parent-4 {
+    &:before {
+      display: block;
+      order:1;
+      width:23%;
+      content:'';
+    }
+    &:after {
+      display: block;
+      width:23%;
+      content:'';
+    }
+  }
+  .l-flex-col-4 {
+    margin-bottom: 20px;
+    width: 23%;
+
+    @include max-screen($bp-mobile) {
+      width: 48%;
+    }
+  }
+  // ----------------------------------------
+// ----------------------------------------

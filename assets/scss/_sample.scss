@@ -1,0 +1,31 @@
+// 赤
+$color-red: #e60012;
+// 青
+$color-blue: #448aca;
+// 黄
+$color-yellow: #e6de00;
+// 緑
+$color-green: #26e600;
+
+// 赤
+.bg-red {
+  background: $color-red;
+}
+// 青
+.bg-blue {
+  background: $color-blue;
+}
+// 黄
+.bg-yellow {
+  background: $color-yellow;
+}
+// 緑
+.bg-green {
+  background: $color-green;
+}
+
+.box-sample {
+  width: 300px;
+  padding: 30px;
+  border: 10px solid $color-black;
+}

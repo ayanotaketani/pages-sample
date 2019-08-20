@@ -1,0 +1,91 @@
+// ----------------------------------------
+// 基本形
+// ----------------------------------------
+table {
+  width: 100%;
+  border: 1px solid $color-gray;
+
+  th {
+    padding: 20px;
+    background: $color-gray;
+    border: 1px solid $color-gray;
+    @include max-screen($bp-mobile) {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+    }
+  }
+
+  td {
+    padding: 20px;
+    border: 1px solid $color-gray;
+    @include max-screen($bp-mobile) {
+      display: block;
+      width: 100%;
+      padding: 10px 20px;
+      // border: none;
+    }
+  }
+}
+// ----------------------------------------
+
+// ----------------------------------------
+  // テーブル01
+// ----------------------------------------
+.table01 {
+  @include max-screen($bp-mobile) {
+
+  }
+}
+// ----------------------------------------
+
+// ----------------------------------------
+  // テーブル02
+// ----------------------------------------
+.table02 {
+  @include max-screen($bp-mobile) {
+    tr {
+      &:first-child {
+        display: none;
+      }
+
+      &::before {
+        content: attr(data-label);
+        display: block;
+        text-align: center;
+        padding: 10px;
+        background-color: $color-gray;
+        font-weight: bold;
+      }
+    }
+  }
+}
+// ----------------------------------------
+
+// ----------------------------------------
+  // テーブル03
+// ----------------------------------------
+.table03 {
+  @include max-screen($bp-mobile) {
+    tr:first-child {
+      display: none;
+    }
+
+    td {
+      &:first-child {
+        background-color: $color-gray;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      &::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 1.4rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
+// ----------------------------------------
